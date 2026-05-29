@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gazzabini Mates — Mates artesanales y termomates premium en Paraguay. Comprá por WhatsApp con entrega rápida." />
+  <title>Gazzabini Mates — El mate que merecés</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600&display=swap" />
+
+  <link rel="stylesheet" href="styles.css?v=20260529" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧉</text></svg>" />
+</head>
+<body>
+
+  <!-- Skip link -->
+  <a class="skip-link" href="#main">Ir al contenido</a>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav" aria-label="Navegación principal">
+    <div class="nav-inner container">
+      <a class="nav-logo" href="index.html" aria-label="Inicio Gazzabini Mates">
+        <span class="nav-logo-glyph">🧉</span>
+        <span class="nav-logo-text">Gazzabini <em>Mates</em></span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html" class="nav-link is-active">Inicio</a></li>
+        <li><a href="catalogo.html" class="nav-link">Catálogo</a></li>
+        <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+      </ul>
+      <a class="btn btn-primary nav-cta" href="https://wa.me/595973453838?text=Hola%21+Vi+la+web+de+Gazzabini+Mates+y+me+interesa+%F0%9F%A7%89" target="_blank" rel="noopener">
+        Comprar por WhatsApp
+      </a>
+      <button class="nav-burger" aria-label="Menú" aria-expanded="false" aria-controls="nav-mobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+      <ul role="list">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="https://wa.me/595973453838?text=Hola%21+Vi+la+web+de+Gazzabini+Mates" target="_blank" rel="noopener" class="btn btn-primary">Comprar por WhatsApp</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Bienvenida">
+      <div class="hero-bg">
+        <img src="assets/img/hero.webp" alt="Mate artesanal Gazzabini" fetchpriority="high" loading="eager" onerror="this.style.display='none'" />
+        <div class="hero-bg-fill"></div>
+      </div>
+      <div class="hero-grain"></div>
+      <div class="hero-mesh"></div>
+      <div class="hero-inner container">
+        <p class="hero-kicker reveal">Paraguay · Hecho con cuidado</p>
+        <h1 class="hero-title" data-split="words">
+          El mate que<br /><em>merecés.</em>
+        </h1>
+        <p class="hero-sub reveal">Mates artesanales y termomates de calidad premium. Entrega rápida en Asunción.</p>
+        <div class="hero-actions reveal">
+          <a class="btn btn-primary btn-lg" href="catalogo.html">Ver catálogo</a>
+          <a class="btn btn-ghost btn-lg" href="https://wa.me/595973453838?text=Hola%21+Vi+la+web+de+Gazzabini+Mates+y+me+interesa+%F0%9F%A7%89" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Consultar ahora
+          </a>
+        </div>
+      </div>
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <span>Deslizá</span>
+        <svg width="16" height="24" viewBox="0 0 16 24" fill="none"><rect x="1" y="1" width="14" height="22" rx="7" stroke="currentColor" stroke-width="1.5"/><circle class="scroll-dot" cx="8" cy="8" r="3" fill="currentColor"/></svg>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-strip" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Mates artesanales</span><span class="dot-sep">·</span>
+        <span>Termomates premium</span><span class="dot-sep">·</span>
+        <span>Entrega en Asunción</span><span class="dot-sep">·</span>
+        <span>Calidad garantizada</span><span class="dot-sep">·</span>
+        <span>Mates artesanales</span><span class="dot-sep">·</span>
+        <span>Termomates premium</span><span class="dot-sep">·</span>
+        <span>Entrega en Asunción</span><span class="dot-sep">·</span>
+        <span>Calidad garantizada</span><span class="dot-sep">·</span>
+        <span>Mates artesanales</span><span class="dot-sep">·</span>
+        <span>Termomates premium</span><span class="dot-sep">·</span>
+        <span>Entrega en Asunción</span><span class="dot-sep">·</span>
+        <span>Calidad garantizada</span><span class="dot-sep">·</span>
+      </div>
+    </div>
+
+    <!-- INTRO -->
+    <section class="section-intro container reveal-section">
+      <div class="intro-grid">
+        <div class="intro-text">
+          <p class="section-eyebrow reveal">Nuestra filosofía</p>
+          <h2 class="section-title reveal">Cada mate tiene<br /><em>su historia.</em></h2>
+          <p class="section-body reveal">En Gazzabini Mates seleccionamos cada producto con el mismo cuidado con que preparás el primer mate del día. No es solo una taza: es un ritual, una pausa, un momento para vos.</p>
+          <a class="btn btn-outline reveal" href="catalogo.html">Explorar productos</a>
+        </div>
+        <div class="intro-visual reveal">
+          <div class="intro-img-wrap">
+            <img src="assets/img/mate-2.webp" alt="Mate calabaza artesanal" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('img-placeholder')" />
+          </div>
+          <div class="intro-badge">
+            <span class="badge-num" data-count-to="500">500+</span>
+            <span class="badge-label">clientes<br/>felices</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section-features" aria-label="Por qué elegirnos">
+      <div class="container">
+        <p class="section-eyebrow text-center reveal">Por qué elegirnos</p>
+        <h2 class="section-title text-center reveal">Simple, rápido, <em>de calidad.</em></h2>
+        <div class="features-grid" data-features>
+          <div class="feature-card reveal" data-tilt>
+            <span class="feature-icon">🧉</span>
+            <h3>Mates artesanales</h3>
+            <p>Seleccionados uno a uno, curados para un sabor limpio desde el primer mate.</p>
+          </div>
+          <div class="feature-card reveal" data-tilt>
+            <span class="feature-icon">🌡️</span>
+            <h3>Termomates duraderos</h3>
+            <p>6 a 12 horas de temperatura óptima. Sin pérdidas, sin compromisos.</p>
+          </div>
+          <div class="feature-card reveal" data-tilt>
+            <span class="feature-icon">🚚</span>
+            <h3>Entrega rápida</h3>
+            <p>Asunción y Gran Asunción. Coordinamos entrega por WhatsApp al momento.</p>
+          </div>
+          <div class="feature-card reveal" data-tilt>
+            <span class="feature-icon">💬</span>
+            <h3>Atención personal</h3>
+            <p>Hablás directo con nosotros. Sin formularios, sin esperas, sin robots.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTOS DESTACADOS -->
+    <section class="section-products container" aria-label="Productos destacados">
+      <div class="products-header">
+        <div>
+          <p class="section-eyebrow reveal">Lo más pedido</p>
+          <h2 class="section-title reveal">Nuestros <em>favoritos.</em></h2>
+        </div>
+        <a class="btn btn-outline reveal" href="catalogo.html">Ver todos</a>
+      </div>
+      <div class="products-grid" data-products-home>
+        <!-- 4 products - hardcoded for no-JS fallback -->
+        <article class="product-card reveal" data-tilt>
+          <div class="product-img-wrap">
+            <img src="assets/img/mate-1.webp" alt="Mate Clásico Madera" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('img-placeholder')" />
+            <span class="product-badge">Más vendido</span>
+          </div>
+          <div class="product-info">
+            <span class="product-cat">Mates</span>
+            <h3>Mate Clásico Madera</h3>
+            <p>Mate torneado en madera nativa, acabado natural.</p>
+            <div class="product-foot">
+              <strong class="product-price">Gs. 85.000</strong>
+              <a class="btn btn-whatsapp" href="https://wa.me/595973453838?text=Hola%21+Quiero+el+Mate+Cl%C3%A1sico+Madera+%F0%9F%A7%89" target="_blank" rel="noopener" aria-label="Comprar Mate Clásico Madera por WhatsApp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                Pedir
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="product-card reveal" data-tilt>
+          <div class="product-img-wrap">
+            <img src="assets/img/termo-1.webp" alt="Termomate 500ml" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('img-placeholder')" />
+            <span class="product-badge">Top ventas</span>
+          </div>
+          <div class="product-info">
+            <span class="product-cat">Termomates</span>
+            <h3>Termomate 500ml</h3>
+            <p>Mantiene la temperatura 6 horas. Carga automática al presionar.</p>
+            <div class="product-foot">
+              <strong class="product-price">Gs. 180.000</strong>
+              <a class="btn btn-whatsapp" href="https://wa.me/595973453838?text=Hola%21+Quiero+el+Termomate+500ml+%F0%9F%A7%89" target="_blank" rel="noopener" aria-label="Comprar Termomate 500ml por WhatsApp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                Pedir
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="product-card reveal" data-tilt>
+          <div class="product-img-wrap">
+            <img src="assets/img/termo-3.webp" alt="Termomate Acero Negro" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('img-placeholder')" />
+            <span class="product-badge">Edición especial</span>
+          </div>
+          <div class="product-info">
+            <span class="product-cat">Termomates</span>
+            <h3>Termomate Acero Negro</h3>
+            <p>Edición especial en negro mate. Moderno, robusto, bombilla incluida.</p>
+            <div class="product-foot">
+              <strong class="product-price">Gs. 245.000</strong>
+              <a class="btn btn-whatsapp" href="https://wa.me/595973453838?text=Hola%21+Quiero+el+Termomate+Acero+Negro+%F0%9F%A7%89" target="_blank" rel="noopener" aria-label="Comprar Termomate Acero Negro por WhatsApp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                Pedir
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="product-card product-card--combo reveal" data-tilt>
+          <div class="product-img-wrap">
+            <img src="assets/img/mate-1.webp" alt="Combo Starter" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('img-placeholder')" />
+            <span class="product-badge product-badge--green">Ahorrás 25.000 Gs.</span>
+          </div>
+          <div class="product-info">
+            <span class="product-cat">Combos</span>
+            <h3>Combo Starter</h3>
+            <p>Mate madera + Termomate 500ml + Bombilla premium. El kit perfecto.</p>
+            <div class="product-foot">
+              <strong class="product-price">Gs. 240.000</strong>
+              <a class="btn btn-whatsapp" href="https://wa.me/595973453838?text=Hola%21+Quiero+el+Combo+Starter+%F0%9F%A7%89" target="_blank" rel="noopener" aria-label="Comprar Combo Starter por WhatsApp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                Pedir
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="section-testimonials" aria-label="Testimonios">
+      <div class="container">
+        <p class="section-eyebrow text-center reveal">Lo que dicen</p>
+        <h2 class="section-title text-center reveal">Clientes que <em>vuelven.</em></h2>
+        <div class="testimonials-grid">
+          <blockquote class="testimonial-card reveal" data-tilt>
+            <div class="stars" aria-label="5 estrellas">★★★★★</div>
+            <p>"El termomate es una locura, lo llevo a todos lados. Y el mate de madera quedó curado perfecto."</p>
+            <footer>
+              <strong>Lucía R.</strong>
+              <span>Asunción</span>
+            </footer>
+          </blockquote>
+          <blockquote class="testimonial-card reveal" data-tilt>
+            <div class="stars" aria-label="5 estrellas">★★★★★</div>
+            <p>"Compré el combo starter y fue la mejor decisión. Todo de muy buena calidad y entregaron rápido."</p>
+            <footer>
+              <strong>Mateo G.</strong>
+              <span>Luque</span>
+            </footer>
+          </blockquote>
+          <blockquote class="testimonial-card reveal" data-tilt>
+            <div class="stars" aria-label="5 estrellas">★★★★★</div>
+            <p>"Siempre compro acá. El trato es excelente y los productos no defraudan nunca."</p>
+            <footer>
+              <strong>Valeria S.</strong>
+              <span>San Lorenzo</span>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="section-cta" aria-label="Llamado a la acción">
+      <div class="cta-mesh"></div>
+      <div class="cta-grain"></div>
+      <div class="container cta-inner">
+        <span class="cta-glyph" aria-hidden="true">🧉</span>
+        <h2 class="cta-title reveal">¿Listo para<br /><em>tu próximo mate?</em></h2>
+        <p class="cta-sub reveal">Escribinos por WhatsApp y te asesoramos. Entrega coordinada en Asunción y Gran Asunción.</p>
+        <a class="btn btn-primary btn-xl reveal" href="https://wa.me/595973453838?text=Hola%21+Vi+la+web+de+Gazzabini+Mates+y+me+interesa+un+producto+%F0%9F%A7%89" target="_blank" rel="noopener">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Consultá por WhatsApp
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html" aria-label="Inicio">
+          <span>🧉</span>
+          <span>Gazzabini <em>Mates</em></span>
+        </a>
+        <p>El mate que merecés. Asunción, Paraguay.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Navegación del pie de página">
+        <ul role="list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="footer-contact">
+        <a href="https://wa.me/595973453838" target="_blank" rel="noopener" class="footer-contact-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          WhatsApp
+        </a>
+        <a href="https://instagram.com/gazzabinimates" target="_blank" rel="noopener" class="footer-contact-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Gazzabini Mates · Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a class="fab-whatsapp" href="https://wa.me/595973453838?text=Hola%21+Vi+la+web+de+Gazzabini+Mates+%F0%9F%A7%89" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <!-- Cursor (desktop only) -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+  </div>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="lib/manifest.js"></script>
+  <script defer src="main.js?v=20260529"></script>
+</body>
+</html>

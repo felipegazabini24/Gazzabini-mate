@@ -1,0 +1,11 @@
+# Imágenes originales (pueden ser pesadas, no van al repo)
+assets/photos/source/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.swp
