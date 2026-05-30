@@ -36,7 +36,7 @@ def convert(source_dir: Path, output_dir: Path, quality: int, max_width: int) ->
                 img    = img.resize((max_width, new_h), Image.LANCZOS)
 
             img.save(dest, "WEBP", quality=quality, method=6)
-            print(f"  {src.name:40s} → {dest.name}  ({dest.stat().st_size // 1024} KB)")
+            print(f"  {src.name:40s} -> {dest.name}  ({dest.stat().st_size // 1024} KB)")
 
     print(f"\nListo. {len(sources)} imagen(es) convertida(s) en {output_dir}")
 
