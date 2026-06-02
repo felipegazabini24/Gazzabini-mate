@@ -674,3 +674,11 @@ body {
     padding-top: 70px;
   }
 }
+
+/* Fix nav-cta y page-header */
+.nav {
+  background-color: rgba(244,239,230,.97);
+}
+.page-header {
+  padding-top: 2.5rem;
+}
