@@ -687,6 +687,19 @@ ul  { list-style: none; }
   .hero-actions { flex-direction: column; align-items: flex-start; }
   .products-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-grid  { grid-template-columns: 1fr; }
+
+  /* En mobile 2-col el precio + botón no caben en fila → apilamos */
+  .product-info { padding: 1rem; }
+  .product-foot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .625rem;
+  }
+  .product-foot .btn-whatsapp {
+    width: 100%;
+    justify-content: center;
+  }
+  .product-price { font-size: 1.0625rem; }
 }
 @media (max-width: 360px) {
   .products-grid { grid-template-columns: 1fr; }
