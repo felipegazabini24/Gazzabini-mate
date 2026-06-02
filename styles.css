@@ -54,6 +54,7 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   scroll-padding-top: var(--nav-h);
+  color-scheme: light;
 }
 body {
   background: var(--bg);
@@ -545,6 +546,13 @@ ul  { list-style: none; }
     radial-gradient(ellipse at 20% 30%, rgba(184,92,58,.08) 0%, transparent 50%);
 }
 .page-header > .container { position: relative; z-index: 1; }
+.page-header-brand {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-family: var(--font-serif); font-size: 1.0625rem; font-weight: 600;
+  color: var(--ink); margin-bottom: .875rem;
+  letter-spacing: .01em;
+}
+.page-header-brand em { color: var(--accent); font-style: italic; }
 .page-header-title { font-size: clamp(2.5rem, 5vw + 1rem, 4rem); margin-bottom: .75rem; }
 .page-header-sub   { font-size: 1.0625rem; color: var(--ink-2); max-width: 48ch; }
 
