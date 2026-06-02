@@ -21,7 +21,13 @@
     var mobileMenu = q('#nav-mobile');
     if (!nav) return;
 
+    var hasHero = !!q('.hero');
+
     function updateNav() {
+      if (!hasHero) {
+        nav.classList.add('is-solid');
+        return;
+      }
       nav.classList.toggle('is-solid', window.scrollY > 20);
     }
     updateNav();
