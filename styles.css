@@ -665,20 +665,13 @@ ul  { list-style: none; }
   .products-grid { grid-template-columns: 1fr; }
 }
 
-/* Fix superposición nav - NO tocar nada más */
-body {
-  padding-top: 80px;
-}
-@media (max-width: 768px) {
-  body {
-    padding-top: 70px;
-  }
-}
-
-/* Fix nav-cta y page-header */
+/* Fix nav y page-header */
 .nav {
   background-color: rgba(244,239,230,.97);
 }
+body {
+  padding-top: var(--nav-h);
+}
 .page-header {
-  padding-top: 2.5rem;
+  padding-top: 3.5rem;
 }
