@@ -664,3 +664,13 @@ ul  { list-style: none; }
 @media (max-width: 360px) {
   .products-grid { grid-template-columns: 1fr; }
 }
+
+/* Fix superposición nav - NO tocar nada más */
+body {
+  padding-top: 80px;
+}
+@media (max-width: 768px) {
+  body {
+    padding-top: 70px;
+  }
+}
