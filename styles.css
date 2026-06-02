@@ -177,12 +177,6 @@ ul  { list-style: none; }
   box-shadow: 0 1px 0 rgba(26,26,26,.09);
   transition: background .35s var(--ease-out), box-shadow .35s;
 }
-.nav.is-solid {
-  background: var(--bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 1px 0 rgba(26,26,26,.09);
-}
 .nav-inner {
   display: flex; align-items: center; gap: 1.5rem; height: 100%;
 }
@@ -259,7 +253,7 @@ ul  { list-style: none; }
 
 /* ── HERO ── */
 .hero {
-  position: relative; min-height: 100svh;
+  position: relative; min-height: calc(100svh - var(--nav-h));
   display: flex; align-items: center;
   overflow: hidden;
 }
@@ -425,7 +419,7 @@ ul  { list-style: none; }
   overflow: hidden; background: var(--bg-dark);
 }
 .product-img-wrap img {
-  width: 100%; height: 100%; object-fit: contain;
+  width: 100%; height: 100%; object-fit: cover;
   transition: transform .5s var(--ease-out);
 }
 .product-card:hover .product-img-wrap img { transform: scale(1.06); }
@@ -645,6 +639,7 @@ ul  { list-style: none; }
 .contact-card h3 { font-size: 1.25rem; margin-bottom: .25rem; }
 .contact-card p  { font-size: .9375rem; color: var(--ink-3); line-height: 1.6; flex: 1; }
 .contact-card .btn { align-self: flex-start; }
+.contact-phone { font-size: .9375rem; font-weight: 600; color: var(--ink); }
 
 /* How to buy */
 .steps-section { background: var(--bg-dark); padding-block: 5rem; }
