@@ -1,6 +1,6 @@
 /* ================================================
    GAZZABINI MATES — Editorial Light Cream
-   styles.css v20260529
+   styles.css v20260602b
    ================================================ */
 
 /* ── Reset ── */
@@ -53,6 +53,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  scroll-padding-top: var(--nav-h);
 }
 body {
   background: var(--bg);
@@ -171,30 +172,44 @@ ul  { list-style: none; }
 .nav {
   position: fixed; top: 0; left: 0; right: 0; width: 100%;
   z-index: 1000; height: var(--nav-h);
-  background: var(--bg);
+  background: transparent;
+  transition: background .35s var(--ease-out), box-shadow .35s, backdrop-filter .35s;
+}
+.nav.is-solid {
+  background: rgba(244,239,230,.97);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 1px 0 rgba(26,26,26,.09);
-  transition: background .35s var(--ease-out), box-shadow .35s;
 }
 .nav-inner {
   display: flex; align-items: center; gap: 1.5rem; height: 100%;
 }
+
+/* Logo y links: blancos sobre hero, oscuros cuando sólido */
 .nav-logo {
   display: flex; align-items: center; gap: .5rem;
   font-family: var(--font-serif); font-size: 1.125rem; font-weight: 600;
-  color: var(--ink); flex-shrink: 0;
+  color: rgba(255,255,255,.95); flex-shrink: 0;
+  transition: color .35s var(--ease-out);
 }
-.nav-logo em { color: var(--accent); }
+.nav.is-solid .nav-logo { color: var(--ink); }
+.nav-logo em { color: var(--accent-light); }
+.nav.is-solid .nav-logo em { color: var(--accent); }
 .nav-logo-glyph { font-size: 1.4rem; }
 
 .nav-links { display: none; gap: .25rem; margin-left: auto; }
 .nav-link {
   padding: .375rem .875rem; border-radius: 9999px;
-  font-size: .9375rem; font-weight: 500; color: var(--ink);
+  font-size: .9375rem; font-weight: 500;
+  color: rgba(255,255,255,.85);
   transition: color .2s, background .2s;
 }
+.nav.is-solid .nav-link { color: var(--ink); }
 .nav-link:hover, .nav-link.is-active {
+  color: var(--white); background: rgba(255,255,255,.15);
+}
+.nav.is-solid .nav-link:hover,
+.nav.is-solid .nav-link.is-active {
   color: var(--accent); background: rgba(184,92,58,.08);
 }
 .nav-cta { margin-left: auto; display: none; }
@@ -207,10 +222,11 @@ ul  { list-style: none; }
 }
 .nav-burger span {
   display: block; width: 24px; height: 2px;
-  background: var(--ink); border-radius: 2px;
-  transition: transform .3s, opacity .3s;
+  background: rgba(255,255,255,.9); border-radius: 2px;
+  transition: transform .3s, opacity .3s, background .35s;
   transform-origin: center;
 }
+.nav.is-solid .nav-burger span { background: var(--ink); }
 .nav-burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-burger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .nav-burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -253,7 +269,8 @@ ul  { list-style: none; }
 
 /* ── HERO ── */
 .hero {
-  position: relative; min-height: calc(100svh - var(--nav-h));
+  position: relative; min-height: 100svh;
+  margin-top: calc(-1 * var(--nav-h));
   display: flex; align-items: center;
   overflow: hidden;
 }
