@@ -203,7 +203,7 @@ ul  { list-style: none; }
 .nav-link:hover, .nav-link.is-active {
   color: var(--accent); background: rgba(184,92,58,.08);
 }
-.nav-cta { display: none; }
+.nav-cta { margin-left: auto; display: none; }
 
 /* Burger */
 .nav-burger {
@@ -253,7 +253,7 @@ ul  { list-style: none; }
 }
 
 @media (min-width: 768px) {
-  .nav-links { display: flex; }
+  .nav-links, .nav-cta { display: flex; }
   .nav-burger { display: none; }
 }
 
