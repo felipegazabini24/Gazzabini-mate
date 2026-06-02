@@ -226,6 +226,58 @@
     });
   }
 
+  /* ── initLightbox ── */
+  function initLightbox() {
+    var imgs = qa('.product-img-wrap img');
+    if (!imgs.length) return;
+
+    var lb = document.createElement('div');
+    lb.className = 'lightbox';
+    lb.setAttribute('aria-hidden', 'true');
+    lb.setAttribute('role', 'dialog');
+    lb.setAttribute('aria-label', 'Vista de producto');
+    lb.innerHTML =
+      '<div class="lightbox-backdrop"></div>' +
+      '<div class="lightbox-content">' +
+        '<img class="lightbox-img" src="" alt="" />' +
+        '<button class="lightbox-close" aria-label="Cerrar">' +
+          '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
+        '</button>' +
+      '</div>';
+    document.body.appendChild(lb);
+
+    var lbImg      = lb.querySelector('.lightbox-img');
+    var lbBackdrop = lb.querySelector('.lightbox-backdrop');
+    var lbClose    = lb.querySelector('.lightbox-close');
+
+    function open(src, alt) {
+      lbImg.src = src;
+      lbImg.alt = alt || '';
+      lb.classList.add('is-open');
+      lb.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      lbClose.focus();
+    }
+    function close() {
+      lb.classList.remove('is-open');
+      lb.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    imgs.forEach(function(img) {
+      img.parentElement.style.cursor = 'zoom-in';
+      img.parentElement.addEventListener('click', function() {
+        open(img.src, img.alt);
+      });
+    });
+
+    lbClose.addEventListener('click', close);
+    lbBackdrop.addEventListener('click', close);
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && lb.classList.contains('is-open')) close();
+    });
+  }
+
   /* ── Boot ── */
   function boot() {
     safe(initNav,        'initNav');
@@ -235,6 +287,7 @@
     safe(initMarquee,    'initMarquee');
     safe(initCountUp,    'initCountUp');
     safe(initFilterTabs, 'initFilterTabs');
+    safe(initLightbox,   'initLightbox');
   }
 
   if (document.readyState === 'loading') {
