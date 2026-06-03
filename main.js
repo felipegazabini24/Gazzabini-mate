@@ -418,7 +418,7 @@
             return '• ' + i.name + ' x' + i.qty + ' — ' + fmtPrice(i.price * i.qty);
           });
           var msg =
-            'Hola! Me interesa hacer este pedido 🧩\n\n' +
+            'Hola! Me interesa hacer este pedido 🧉\n\n' +
             lines.join('\n') +
             '\n\n*Total: ' + fmtPrice(total) + '*\n\n' +
             '\xBFPueden confirmarme disponibilidad y coordinar la entrega?';
