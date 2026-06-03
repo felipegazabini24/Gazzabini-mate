@@ -196,7 +196,7 @@ ul  { list-style: none; }
 .nav.is-solid .nav-logo { color: var(--ink); }
 .nav-logo em { color: var(--accent-light); }
 .nav.is-solid .nav-logo em { color: var(--accent); }
-.nav-logo-glyph { font-size: 1.4rem; }
+.nav-logo-icon { width: 1.25rem; height: auto; flex-shrink: 0; }
 
 .nav-links { display: none; gap: .25rem; margin-left: auto; }
 .nav-link {
