@@ -1,4 +1,4 @@
-/* ================================================
+﻿/* ================================================
    GAZZABINI MATES — main.js v20260529
    IIFE clásico, sin módulos, sin imports
    ================================================ */
@@ -453,6 +453,9 @@
       if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeCart();
     });
 
+    var CART_SVG =
+      '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>';
+
     qa('.product-foot .btn-whatsapp').forEach(function(link) {
       var card    = link.closest('.product-card');
       if (!card) return;
@@ -467,9 +470,7 @@
       btn.type = 'button';
       btn.className = 'btn btn-add-cart';
       btn.setAttribute('aria-label', 'Agregar ' + name + ' al carrito');
-      btn.innerHTML =
-        '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>' +
-        ' Agregar';
+      btn.innerHTML = CART_SVG + ' Agregar';
 
       btn.addEventListener('click', function() {
         var existing = cart.find(function(i) { return i.name === name; });
@@ -477,18 +478,31 @@
         else { cart.push({ name: name, price: price, qty: 1 }); }
         save();
         updateBadge();
+        openCart();
 
         btn.innerHTML = '✓ Agregado';
         btn.style.background = '#2a7a4b';
         setTimeout(function() {
-          btn.innerHTML =
-            '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>' +
-            ' Agregar';
+          btn.innerHTML = CART_SVG + ' Agregar';
           btn.style.background = '';
         }, 1400);
       });
 
-      link.parentNode.replaceChild(btn, link);
+      var waSVG = link.querySelector('svg');
+      var waBtn = document.createElement('a');
+      waBtn.className = 'btn btn-whatsapp btn-wa-icon';
+      waBtn.href = link.href;
+      waBtn.target = '_blank';
+      waBtn.rel = 'noopener';
+      waBtn.setAttribute('aria-label', 'Pedir ' + name + ' por WhatsApp (1 unidad)');
+      waBtn.innerHTML = (waSVG ? waSVG.outerHTML : '') + '<span class="wa-label"> Pedir</span>';
+
+      var group = document.createElement('div');
+      group.className = 'product-btn-group';
+      group.appendChild(btn);
+      group.appendChild(waBtn);
+
+      link.parentNode.replaceChild(group, link);
     });
 
     updateBadge();

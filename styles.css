@@ -1,4 +1,4 @@
-/* ================================================
+﻿/* ================================================
    GAZZABINI MATES — Editorial Light Cream
    styles.css v20260602b
    ================================================ */
@@ -757,6 +757,16 @@ ul  { list-style: none; }
 }
 @media (max-width: 480px) {
   .product-foot .btn-add-cart { width: 100%; justify-content: center; }
+}
+
+/* ── Product button group ── */
+.product-btn-group { display: flex; gap: .375rem; align-items: center; }
+.btn-wa-icon { padding: .5rem .625rem; }
+.btn-wa-icon .wa-label { display: none; }
+@media (max-width: 480px) {
+  .product-foot .product-btn-group { width: 100%; flex-direction: column; }
+  .product-foot .product-btn-group .btn { width: 100%; justify-content: center; }
+  .btn-wa-icon .wa-label { display: inline; }
 }
 
 /* ── Cart Overlay + Drawer ── */
