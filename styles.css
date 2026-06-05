@@ -413,7 +413,8 @@ ul  { list-style: none; }
   transition: box-shadow .3s var(--ease-out), transform .3s var(--ease-out);
 }
 .feature-card:hover { box-shadow: 0 12px 32px rgba(184,92,58,.18); }
-.feature-icon { font-size: 2rem; display: block; margin-bottom: 1rem; }
+.feature-icon { display: block; margin-bottom: 1.1rem; color: var(--accent); }
+.feature-icon svg { width: 2.25rem; height: 2.25rem; }
 .feature-card h3 { margin-bottom: .5rem; font-size: 1.125rem; }
 .feature-card p  { font-size: .9375rem; line-height: 1.6; color: var(--ink-3); }
 
