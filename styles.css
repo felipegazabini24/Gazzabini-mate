@@ -277,7 +277,7 @@ ul  { list-style: none; }
 .hero {
   position: relative; min-height: 100svh;
   margin-top: calc(-1 * var(--nav-h));
-  display: flex; align-items: center;
+  display: flex; align-items: flex-start;
   overflow: hidden;
 }
 .hero-bg { position: absolute; inset: 0; z-index: 0; }
@@ -302,7 +302,10 @@ ul  { list-style: none; }
 }
 .hero-inner {
   position: relative; z-index: 2;
-  padding-block: 4rem; max-width: 820px;
+  /* Contenido anclado arriba con holgura bajo el nav. Así el título y
+     los botones se ven siempre, sin importar la altura de la pantalla. */
+  padding-block: calc(var(--nav-h) + clamp(2.5rem, 14vh, 8rem)) 3.5rem;
+  max-width: 820px;
 }
 .hero-kicker {
   font-size: .8125rem; font-weight: 600;
