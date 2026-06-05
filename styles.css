@@ -710,6 +710,26 @@ ul  { list-style: none; }
   }
 }
 
+/* ── Pantallas BAJAS (laptop con poca altura, móvil apaisado) ──
+   El hero alto se compacta y se alinea arriba para que nunca
+   quede contenido recortado fuera de la vista. ── */
+@media (max-height: 640px) {
+  .hero { min-height: auto; align-items: flex-start; }
+  .hero-inner {
+    padding-block: calc(var(--nav-h) + 1.25rem) 2.5rem;
+    max-width: 720px;
+  }
+  .hero-title { font-size: clamp(1.9rem, 4vw + 1rem, 3rem); margin-bottom: 1rem; }
+  .hero-kicker { margin-bottom: .75rem; }
+  .hero-sub { margin-bottom: 1.5rem; }
+  .hero-scroll-hint { display: none; }
+}
+
+/* Si el JS no se ejecuta, el contenido animado se muestra igual */
+@media (scripting: none) {
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
 /* ── Responsive ── */
 @media (max-width: 480px) {
   .hero-actions { flex-direction: column; align-items: flex-start; }
