@@ -9,3 +9,7 @@ desktop.ini
 # Editor
 .vscode/
 *.swp
+
+# Temporales de trabajo
+COMMIT_MSG.tmp
+_preview/
