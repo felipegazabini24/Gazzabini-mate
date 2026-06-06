@@ -720,9 +720,13 @@ ul  { list-style: none; }
 @media (max-width: 767px) {
   .hero-bg-fill {
     background: linear-gradient(160deg,
-      rgba(26,26,26,.42) 0%,
-      rgba(26,26,26,.22) 55%,
-      rgba(184,92,58,.12) 100%);
+      rgba(26,26,26,.30) 0%,
+      rgba(26,26,26,.10) 52%,
+      rgba(184,92,58,.05) 100%);
+  }
+  /* sombra suave para que el texto se lea sobre la foto más clara */
+  .hero-kicker, .hero-title, .hero-sub {
+    text-shadow: 0 2px 14px rgba(0,0,0,.5);
   }
 }
 
