@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600&display=swap" />
 
   <link rel="preload" as="image" href="assets/img/hero.webp?v=h2" fetchpriority="high" />
-  <link rel="stylesheet" href="styles.css?v=20260605g" />
+  <link rel="stylesheet" href="styles.css?v=20260609a" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231a1a1a'/><path d='M18 54 Q18 20 50 20 Q82 20 82 54 L76 84 Q76 93 50 93 Q24 93 24 84 Q18 74 18 54 Z' fill='%23b85c3a'/><path d='M18 54 Q18 70 50 70 Q82 70 82 54' fill='none' stroke='%23c97050' stroke-width='4' opacity='.6'/><line x1='55' y1='8' x2='62' y2='86' stroke='%23f4efe6' stroke-width='6' stroke-linecap='round'/></svg>" />
 
   <script type="application/ld+json">
@@ -51,6 +51,61 @@
       "availableLanguage": "Spanish"
     }
   }
+  </script>
+
+  <!-- FAQ structured data (rich results en Google) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "¿Cómo hago mi pedido?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Elegís tus productos del catálogo y nos escribís por WhatsApp, o usás el carrito para enviar todo junto. Te confirmamos disponibilidad y coordinamos la entrega al instante." } },
+      { "@type": "Question", "name": "¿Hacen envíos? ¿Cuánto cuesta?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Entregamos en Asunción y Gran Asunción. El costo y la zona los coordinamos por WhatsApp al confirmar tu pedido." } },
+      { "@type": "Question", "name": "¿Qué formas de pago aceptan?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Coordinamos el medio de pago por WhatsApp según te quede más cómodo, antes de la entrega." } },
+      { "@type": "Question", "name": "¿Los mates vienen curados?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Los mates de calabaza necesitan un curado antes del primer uso. Te dejamos una guía simple paso a paso en la web y, si tenés dudas, te guiamos por WhatsApp." } },
+      { "@type": "Question", "name": "¿Cuánto mantienen la temperatura los termomates?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Entre 6 y 12 horas según el modelo, manteniendo el agua en su punto durante toda la jornada." } }
+    ]
+  }
+  </script>
+
+  <!-- ============================================================
+       ANALÍTICA — Meta Pixel + Google Analytics 4
+       ⚠️  REEMPLAZÁ los marcadores por tus IDs reales:
+         • TU_PIXEL_ID   → Meta Events Manager  (ej: 123456789012345)
+         • G-XXXXXXXXXX   → Google Analytics 4    (ej: G-ABCD1234EF)
+       Mientras tengan el marcador NO se carga nada ni se envían datos.
+  ============================================================ -->
+  <script>
+    (function () {
+      var PIXEL_ID = 'TU_PIXEL_ID';
+      if (PIXEL_ID === 'TU_PIXEL_ID') return; /* sin ID real → no carga */
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', PIXEL_ID);
+      fbq('track', 'PageView');
+    })();
+  </script>
+  <script>
+    (function () {
+      var GA_ID = 'G-XXXXXXXXXX';
+      if (GA_ID === 'G-XXXXXXXXXX') return; /* sin ID real → no carga */
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', GA_ID);
+    })();
   </script>
 </head>
 <body>
@@ -308,6 +363,78 @@
       </div>
     </section>
 
+    <!-- GUÍA DE CURADO -->
+    <section class="section-curado" id="curado" aria-label="Cómo curar tu mate">
+      <div class="container">
+        <p class="section-eyebrow text-center reveal">Antes del primer mate</p>
+        <h2 class="section-title text-center reveal">Cómo curar tu <em>mate.</em></h2>
+        <p class="section-body text-center reveal">Los mates de calabaza necesitan un curado simple para sellar el sabor. Cuatro pasos y queda listo de por vida.</p>
+        <div class="curado-grid">
+          <div class="curado-card reveal" data-tilt>
+            <span class="curado-num">1</span>
+            <h3>Llená con yerba</h3>
+            <p>Cargá 3/4 del mate con yerba usada y húmeda. Tapá con la mano y agitá para cubrir las paredes.</p>
+          </div>
+          <div class="curado-card reveal" data-tilt>
+            <span class="curado-num">2</span>
+            <h3>Agregá agua tibia</h3>
+            <p>Verté agua tibia —nunca hirviendo— hasta cubrir la yerba. Dejá reposar entre 12 y 24 horas.</p>
+          </div>
+          <div class="curado-card reveal" data-tilt>
+            <span class="curado-num">3</span>
+            <h3>Retirá la pulpa</h3>
+            <p>Con una cuchara, raspá suavemente las paredes internas para sacar la pulpa blanda que se desprende.</p>
+          </div>
+          <div class="curado-card reveal" data-tilt>
+            <span class="curado-num">4</span>
+            <h3>Repetí 2 o 3 veces</h3>
+            <p>Repetí el proceso hasta que el agua salga limpia. Dejá secar al sol y… ¡listo para tu primer mate!</p>
+          </div>
+        </div>
+        <p class="curado-note reveal">¿Te quedó alguna duda con el curado? <a href="https://wa.me/595973453838?text=Hola%21+Tengo+una+consulta+sobre+c%C3%B3mo+curar+mi+mate+%F0%9F%A7%89" target="_blank" rel="noopener">Escribinos y te guiamos por WhatsApp</a>.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section-faq" id="faq" aria-label="Preguntas frecuentes">
+      <div class="container">
+        <p class="section-eyebrow text-center reveal">Preguntas frecuentes</p>
+        <h2 class="section-title text-center reveal">Todo lo que <em>necesitás saber.</em></h2>
+        <div class="faq-list">
+          <details class="faq-item" name="faq">
+            <summary class="faq-q">¿Cómo hago mi pedido?
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </summary>
+            <div class="faq-a"><p>Elegís tus productos del catálogo y nos escribís por WhatsApp, o usás el carrito 🛒 para enviar todo junto en un solo mensaje. Te confirmamos disponibilidad y coordinamos la entrega al instante.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary class="faq-q">¿Hacen envíos? ¿Cuánto cuesta?
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </summary>
+            <div class="faq-a"><p>Sí. Entregamos en Asunción y Gran Asunción. El costo y la zona los coordinamos por WhatsApp al confirmar tu pedido, así te queda lo más cómodo posible.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary class="faq-q">¿Qué formas de pago aceptan?
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </summary>
+            <div class="faq-a"><p>Coordinamos el medio de pago por WhatsApp según te quede más cómodo, siempre antes de la entrega.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary class="faq-q">¿Los mates vienen curados?
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </summary>
+            <div class="faq-a"><p>Los mates de calabaza necesitan un curado antes del primer uso. Te dejamos una <a href="#curado">guía simple paso a paso</a> acá mismo y, si tenés dudas, te guiamos por WhatsApp.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary class="faq-q">¿Cuánto mantienen la temperatura los termomates?
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </summary>
+            <div class="faq-a"><p>Entre 6 y 12 horas según el modelo, manteniendo el agua en su punto durante toda la jornada. Ideal para llevar a todos lados.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA FINAL -->
     <section class="section-cta" aria-label="Llamado a la acción">
       <div class="cta-mesh"></div>
@@ -369,6 +496,6 @@
     <div class="cursor-ring"></div>
   </div>
 
-  <script defer src="main.js?v=20260605d"></script>
+  <script defer src="main.js?v=20260609a"></script>
 </body>
 </html>
