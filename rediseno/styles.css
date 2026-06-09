@@ -18,6 +18,8 @@
   --line:     rgba(30,24,19,.1);
   --wa:       #25d366;
   --wa-dk:    #128c7e;
+  --green:    #3f8a45;
+  --green-dk: #2f6a36;
 
   --font: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --nav-h: 4.5rem;
@@ -71,6 +73,8 @@ ul { list-style: none; }
 .btn-ghost--light:hover { background: var(--cream); color: var(--ink); border-color: var(--cream); }
 .btn-wa { background: var(--wa); color: #fff; }
 .btn-wa:hover { background: var(--wa-dk); }
+.btn-green { background: var(--green); color: #fff; border: none; box-shadow: 0 8px 22px rgba(63,138,69,.45); }
+.btn-green:hover { background: var(--green-dk); color: #fff; box-shadow: 0 10px 26px rgba(63,138,69,.55); }
 .btn-lg { padding: 1.05rem 2rem; font-size: .95rem; }
 
 /* ── Nav ── */
