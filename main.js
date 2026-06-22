@@ -12,6 +12,14 @@
   }
   function q(sel, ctx)  { return (ctx || document).querySelector(sel); }
   function qa(sel, ctx) { return Array.from((ctx || document).querySelectorAll(sel)); }
+
+  /* ── Meta Pixel: clic a WhatsApp = conversión (Contact) ──
+     Delegado en document para captar también los enlaces creados en runtime. */
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    var link = t && t.closest ? t.closest('a[href*="wa.me"]') : null;
+    if (link && window.fbq) { try { fbq('track', 'Contact'); } catch (err) {} }
+  });
   var isFine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   /* ── initNav ── */
@@ -422,6 +430,7 @@
             lines.join('\n') +
             '\n\n*Total: ' + fmtPrice(total) + '*\n\n' +
             '\xBFPueden confirmarme disponibilidad y coordinar la entrega?';
+          if (window.fbq) { try { fbq('track', 'Lead', { value: total, currency: 'PYG' }); } catch (err) {} }
           window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
         });
       }
