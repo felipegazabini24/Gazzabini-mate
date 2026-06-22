@@ -72,41 +72,6 @@
     ]
   }
   </script>
-
-  <!-- ============================================================
-       ANALÍTICA — Meta Pixel + Google Analytics 4
-       ⚠️  REEMPLAZÁ los marcadores por tus IDs reales:
-         • TU_PIXEL_ID   → Meta Events Manager  (ej: 123456789012345)
-         • G-XXXXXXXXXX   → Google Analytics 4    (ej: G-ABCD1234EF)
-       Mientras tengan el marcador NO se carga nada ni se envían datos.
-  ============================================================ -->
-  <script>
-    (function () {
-      var PIXEL_ID = 'TU_PIXEL_ID';
-      if (PIXEL_ID === 'TU_PIXEL_ID') return; /* sin ID real → no carga */
-      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-      document,'script','https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', PIXEL_ID);
-      fbq('track', 'PageView');
-    })();
-  </script>
-  <script>
-    (function () {
-      var GA_ID = 'G-XXXXXXXXXX';
-      if (GA_ID === 'G-XXXXXXXXXX') return; /* sin ID real → no carga */
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
-      document.head.appendChild(s);
-      window.dataLayer = window.dataLayer || [];
-      window.gtag = function () { dataLayer.push(arguments); };
-      gtag('js', new Date());
-      gtag('config', GA_ID);
-    })();
-  </script>
 </head>
 <body>
 

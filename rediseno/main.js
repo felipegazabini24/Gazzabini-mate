@@ -7,6 +7,14 @@
   function q(s, c)  { return (c || document).querySelector(s); }
   function qa(s, c) { return Array.from((c || document).querySelectorAll(s)); }
 
+  /* ── Meta Pixel: clic a WhatsApp = conversión (Contact) ──
+     Delegado en document para captar también los enlaces que el JS crea luego. */
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    var link = t && t.closest ? t.closest('a[href*="wa.me"]') : null;
+    if (link && window.fbq) { try { fbq('track', 'Contact'); } catch (err) {} }
+  });
+
   /* ── Nav sólido al hacer scroll ── */
   var nav = q('#nav');
   function onScroll() {
@@ -139,6 +147,7 @@
       if (sendBtn) sendBtn.addEventListener('click', function () {
         var lines = cart.map(function (i) { return '• ' + i.name + ' x' + i.qty + ' — ' + fmtPrice(i.price * i.qty); });
         var msg = 'Hola! Me interesa hacer este pedido 🧉\n\n' + lines.join('\n') + '\n\n*Total: ' + fmtPrice(total) + '*\n\n\xBFPueden confirmarme disponibilidad y coordinar la entrega?';
+        if (window.fbq) { try { fbq('track', 'Lead', { value: total, currency: 'PYG' }); } catch (err) {} }
         window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
       });
       var clearBtn = q('#cart-clear-btn');

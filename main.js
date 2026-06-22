@@ -508,19 +508,6 @@
     updateBadge();
   }
 
-  /* ── initAnalytics ──
-     Registra los clics a WhatsApp como conversión.
-     Solo dispara si Meta Pixel (fbq) o GA4 (gtag) están cargados;
-     si no hay IDs configurados, no hace absolutamente nada. */
-  function initAnalytics() {
-    qa('a[href*="wa.me"]').forEach(function (link) {
-      link.addEventListener('click', function () {
-        if (window.fbq)  { try { fbq('track', 'Lead'); } catch (e) {} }
-        if (window.gtag) { try { gtag('event', 'whatsapp_click'); } catch (e) {} }
-      });
-    });
-  }
-
   /* ── Boot ── */
   function boot() {
     safe(initNav,        'initNav');
@@ -532,7 +519,6 @@
     safe(initFilterTabs, 'initFilterTabs');
     safe(initLightbox,   'initLightbox');
     safe(initCart,       'initCart');
-    safe(initAnalytics,  'initAnalytics');
   }
 
   if (document.readyState === 'loading') {
