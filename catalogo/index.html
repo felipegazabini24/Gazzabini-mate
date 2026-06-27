@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo — Todo Mate Paraguay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    /* ── DESIGN TOKENS ──────────────────────────────────────────── */
+    :root {
+      --negro:        #0A0A0A;
+      --crema:        #FBF9E5;
+      --verde-bosque: #1C2A12;
+      --verde-pasto:  #6B8E45;
+      --oliva:        #909471;
+      --dorado:       #C7983C;
+      --cuero:        #8B4513;
+      --plata:        #D2D2D7;
+    }
+
+    /* ── RESET / BASE ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--crema);
+      color: var(--negro);
+      line-height: 1.5;
+    }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+    /* ── ANIMACIONES ────────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in   { animation: fadeUp 0.8s ease both; }
+    .fade-in-2 { animation: fadeUp 0.8s 0.15s ease both; }
+    .fade-in-3 { animation: fadeUp 0.8s 0.30s ease both; }
+
+    /* ── VIROLA DIVIDER (firma de marca) ────────────────────────── */
+    .virola-divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 52px 0 36px;
+    }
+    .virola-divider::before,
+    .virola-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--dorado) 0px, var(--dorado) 4px,
+        transparent 4px, transparent 10px
+      );
+      opacity: 0.6;
+    }
+    .virola-divider .circulo {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid var(--dorado);
+      position: relative;
+      flex-shrink: 0;
+    }
+    .virola-divider .circulo::before {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      border-radius: 50%;
+      background: var(--dorado);
+    }
+
+    /* ── PORTADA / HERO ─────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      background: var(--verde-bosque);
+      display: flex;
+      align-items: flex-end;
+      padding: 40px 28px 52px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 25% 65%, rgba(107,142,69,0.4) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 15%, rgba(199,152,60,0.18) 0%, transparent 50%),
+        linear-gradient(165deg, #1C2A12 0%, #0A0A0A 100%);
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        90deg,
+        transparent 0px, transparent 3px,
+        rgba(107,142,69,0.07) 3px, rgba(107,142,69,0.07) 4px
+      );
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* dos columnas en pantallas ≥ 680px */
+    @media (min-width: 680px) {
+      .hero-inner {
+        flex-direction: row;
+        align-items: center;
+        gap: 52px;
+      }
+      .hero-left  { flex: 0 0 auto; }
+      .hero-right { flex: 1; }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--dorado);
+      color: var(--negro);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+    .hero-badge::before { content: '●'; font-size: 5px; }
+
+    .hero-logo {
+      width: clamp(200px, 42vw, 320px);
+      height: auto;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 4px 28px rgba(0,0,0,0.55));
+    }
+
+    /* texto del lado derecho */
+    .hero-headline {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 900;
+      line-height: 0.95;
+      color: var(--crema);
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      margin-bottom: 14px;
+    }
+    .hero-headline em {
+      font-style: normal;
+      color: var(--dorado);
+    }
+
+    .hero-tagline {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(0.95rem, 2.5vw, 1.3rem);
+      color: var(--oliva);
+      margin-bottom: 28px;
+    }
+
+    .hero-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 28px;
+    }
+    .hero-chip {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--crema);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 7px 13px;
+      border-radius: 100px;
+      backdrop-filter: blur(4px);
+    }
+    .hero-chip .chip-icon { font-size: 13px; }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--dorado);
+      color: var(--negro);
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(199,152,60,0.4);
+      margin-bottom: 32px;
+    }
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(199,152,60,0.5); }
+    .hero-cta .arrow { font-size: 16px; }
+
+    .hero-stats {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .hero-stat { text-align: left; }
+    .hero-stat-num {
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: var(--crema);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 10px;
+      color: var(--oliva);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .hero-stat-sep {
+      width: 1px;
+      background: rgba(255,255,255,0.1);
+      align-self: stretch;
+    }
+
+    /* ── CONTENEDOR ─────────────────────────────────────────────── */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ── NUESTRA HISTORIA ───────────────────────────────────────── */
+    .historia {
+      background: var(--negro);
+      color: var(--crema);
+      padding: 72px 24px;
+    }
+    .historia .inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    @media (min-width: 640px) {
+      .historia .inner { grid-template-columns: 1fr 1fr; align-items: center; }
+    }
+    .historia-foto {
+      aspect-ratio: 4/3;
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--verde-bosque);
+      border: 1px solid rgba(107,142,69,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--oliva);
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+    .section-label {
+      font-family: 'Pacifico', cursive;
+      color: var(--verde-pasto);
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+    .historia h2 {
+      font-weight: 900;
+      font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    .historia p {
+      color: var(--oliva);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+    .historia p strong { color: var(--verde-pasto); }
+
+    /* ── SECCIONES GENÉRICAS ────────────────────────────────────── */
+    .seccion {
+      padding: 60px 24px;
+    }
+    .seccion-dark {
+      background: var(--verde-bosque);
+      color: var(--crema);
+    }
+    .seccion-header {
+      margin-bottom: 36px;
+    }
+    .seccion-header h2 {
+      font-weight: 900;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      line-height: 1.1;
+    }
+    .seccion-dark .section-label { color: var(--dorado); }
+
+    /* ── GRID EDITORIAL (materos) ───────────────────────────────── */
+    .editorial-grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 480px) {
+      .editorial-grid { grid-template-columns: 1fr 1fr; }
+      .editorial-grid .card-featured { grid-column: span 2; }
+    }
+    @media (min-width: 720px) {
+      .editorial-grid { grid-template-columns: 2fr 1fr 1fr; }
+      .editorial-grid .card-featured {
+        grid-column: span 1;
+        grid-row: span 2;
+      }
+    }
+
+    /* ── PRODUCT CARD ───────────────────────────────────────────── */
+    .card {
+      background: var(--crema);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(0,0,0,0.07);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    }
+    .card-img {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--oliva), var(--verde-bosque));
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-featured .card-img { aspect-ratio: 3/4; }
+    .card-img .placeholder-txt {
+      color: rgba(255,255,255,0.35);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 16px;
+    }
+    .card-img img { position: absolute; inset: 0; }
+    .card-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--dorado);
+      color: var(--negro);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      padding: 5px 12px;
+      border-radius: 100px;
+      z-index: 1;
+    }
+    .card-body {
+      padding: 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .card-nombre {
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.2;
+    }
+    .card-desc {
+      font-size: 12px;
+      color: var(--oliva);
+      line-height: 1.55;
+      flex: 1;
+    }
+    .card-precio {
+      font-weight: 900;
+      font-size: 20px;
+      color: var(--dorado);
+      margin-top: 6px;
+    }
+
+    /* ── GRID COMPACTO (yerbas / termos) ────────────────────────── */
+    .compact-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 480px) { .compact-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 720px) { .compact-grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+    .card-compact {
+      background: rgba(10,10,10,0.35);
+      border: 1px solid rgba(107,142,69,0.2);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      padding: 14px;
+      transition: background 0.2s;
+    }
+    .card-compact:hover { background: rgba(10,10,10,0.55); }
+    .card-compact-img {
+      width: 68px;
+      height: 68px;
+      border-radius: 10px;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--oliva), var(--verde-bosque));
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.5px;
+    }
+    .card-compact-info { flex: 1; min-width: 0; }
+    .card-compact-nombre {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--crema);
+      line-height: 1.2;
+      margin-bottom: 2px;
+    }
+    .card-compact-desc {
+      font-size: 11px;
+      color: var(--oliva);
+      margin-bottom: 5px;
+      line-height: 1.45;
+    }
+    .card-compact-precio {
+      font-weight: 900;
+      font-size: 15px;
+      color: var(--dorado);
+    }
+
+    /* ── COMBOS ─────────────────────────────────────────────────── */
+    .combos-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 600px) { .combos-grid { grid-template-columns: 1fr 1fr; } }
+
+    .card-combo {
+      background: var(--negro);
+      border-radius: 16px;
+      padding: 30px 26px;
+      border: 1px solid rgba(199,152,60,0.3);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .card-combo:hover { border-color: rgba(199,152,60,0.7); }
+    .card-combo::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--dorado), var(--verde-pasto));
+    }
+    .combo-badge {
+      display: inline-block;
+      background: var(--dorado);
+      color: var(--negro);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 18px;
+    }
+    .card-combo h3 {
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: var(--crema);
+      margin-bottom: 10px;
+      line-height: 1.15;
+    }
+    .card-combo p {
+      font-size: 13px;
+      color: var(--oliva);
+      margin-bottom: 24px;
+      line-height: 1.65;
+    }
+    .combo-footer {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .combo-precio {
+      font-weight: 900;
+      font-size: 2.2rem;
+      color: var(--dorado);
+      line-height: 1;
+    }
+    .combo-subtexto {
+      font-size: 12px;
+      color: var(--oliva);
+    }
+
+    /* ── CONTACTO ───────────────────────────────────────────────── */
+    .contacto {
+      background: var(--negro);
+      color: var(--crema);
+      padding: 72px 24px;
+      text-align: center;
+    }
+    .contacto .section-label { margin-bottom: 12px; }
+    .contacto h2 {
+      font-weight: 900;
+      font-size: clamp(2rem, 5.5vw, 3.2rem);
+      margin-bottom: 14px;
+    }
+    .contacto .subtitulo {
+      color: var(--oliva);
+      font-size: 14px;
+      margin-bottom: 48px;
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .contacto-grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 1fr 1fr;
+      max-width: 480px;
+      margin: 0 auto 52px;
+    }
+    @media (min-width: 480px) { .contacto-grid { grid-template-columns: repeat(4,1fr); max-width: 720px; } }
+    .contacto-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 22px 14px;
+    }
+    .contacto-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .contacto-label {
+      font-size: 10px;
+      color: var(--oliva);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .contacto-valor { font-weight: 700; font-size: 13px; color: var(--crema); }
+    .contacto-verde { color: var(--verde-pasto); }
+
+    .footer-virola {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: 320px;
+      margin: 0 auto 28px;
+    }
+    .footer-virola::before, .footer-virola::after {
+      content: ''; flex: 1; height: 1px;
+      background: rgba(144,148,113,0.3);
+    }
+    .footer-virola span {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--dorado); flex-shrink: 0;
+    }
+    .footer-marca {
+      font-family: 'Pacifico', cursive;
+      color: var(--dorado);
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+    .footer-copy { font-size: 11px; color: rgba(144,148,113,0.45); }
+
+    /* ── BOTONES DE PRODUCTO ────────────────────────────────────── */
+    .card-btns {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .btn-add {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 11px 10px;
+      background: var(--negro);
+      color: var(--crema);
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-add:hover { background: var(--verde-bosque); border-color: var(--verde-pasto); }
+    .btn-add:active { transform: scale(0.97); }
+    .btn-add.agregado { background: var(--dorado); color: var(--negro); border-color: var(--dorado); }
+    .btn-wa {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #25D366;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      text-decoration: none;
+    }
+    .btn-wa:hover { background: #1aad52; transform: scale(1.07); }
+    .btn-wa svg { width: 20px; height: 20px; fill: white; }
+
+    /* ── CARRITO FAB ─────────────────────────────────────────────── */
+    .cart-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 24px;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: var(--verde-pasto);
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+      z-index: 900;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .cart-fab:hover { transform: scale(1.08); background: var(--verde-bosque); }
+    .cart-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: var(--dorado);
+      color: var(--negro);
+      font-size: 11px;
+      font-weight: 900;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .cart-badge.visible { display: flex; }
+
+    /* ── CARRITO PANEL ───────────────────────────────────────────── */
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .cart-overlay.open { opacity: 1; pointer-events: all; }
+    .cart-panel {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: min(390px, 100vw);
+      height: 100%;
+      background: var(--negro);
+      color: var(--crema);
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: -8px 0 48px rgba(0,0,0,0.5);
+    }
+    .cart-panel.open { right: 0; }
+    .cart-header {
+      padding: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cart-header h3 { font-weight: 900; font-size: 1.1rem; }
+    .cart-close {
+      background: none;
+      border: none;
+      color: var(--crema);
+      font-size: 1.6rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px 8px;
+    }
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .cart-empty {
+      text-align: center;
+      color: var(--oliva);
+      font-size: 14px;
+      margin-top: 48px;
+      line-height: 1.8;
+    }
+    .cart-item {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cart-item-info { flex: 1; min-width: 0; }
+    .cart-item-nombre { font-weight: 700; font-size: 13px; line-height: 1.3; margin-bottom: 3px; }
+    .cart-item-precio { font-size: 13px; color: var(--dorado); font-weight: 700; }
+    .cart-item-qty { display: flex; align-items: center; gap: 8px; }
+    .qty-btn {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      background: none;
+      color: var(--crema);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s;
+    }
+    .qty-btn:hover { background: rgba(255,255,255,0.1); }
+    .qty-num { font-weight: 700; font-size: 15px; min-width: 22px; text-align: center; }
+    .cart-footer {
+      padding: 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .cart-total-label { color: var(--oliva); font-size: 13px; }
+    .cart-total-valor { font-weight: 900; font-size: 1.4rem; color: var(--dorado); }
+    .btn-wa-send {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 15px;
+      background: #25D366;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-wa-send:hover { background: #1aad52; }
+
+    /* ── PRINT ──────────────────────────────────────────────────── */
+    @media print {
+      @page { size: A4; margin: 15mm; }
+      body { background: white; color: black; font-size: 12pt; }
+      .hero { min-height: 260mm; page-break-after: always; }
+      .historia { page-break-after: always; }
+      .seccion { page-break-inside: avoid; }
+      .card, .card-compact, .card-combo { break-inside: avoid; }
+      .contacto { page-break-before: always; }
+      .card:hover, .card-compact:hover, .card-combo:hover { transform: none; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ PORTADA ══════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-inner">
+
+    <!-- columna izquierda: logo -->
+    <div class="hero-left fade-in">
+      <div class="hero-badge">Catálogo 2026</div>
+      <img src="logo_todomate_sinfondo.png" alt="Todo Mate Paraguay" class="hero-logo">
+    </div>
+
+    <!-- columna derecha: texto -->
+    <div class="hero-right fade-in-2">
+      <h1 class="hero-headline">
+        Materos<br><em>Imperiales</em><br>Paraguay
+      </h1>
+      <p class="hero-tagline">el mate que te acompaña siempre</p>
+
+      <div class="hero-features">
+        <div class="hero-chip"><span class="chip-icon">🧉</span> Materos artesanales</div>
+        <div class="hero-chip"><span class="chip-icon">📦</span> Envíos a todo Paraguay</div>
+        <div class="hero-chip"><span class="chip-icon">💬</span> Pedidos por WhatsApp</div>
+        <div class="hero-chip"><span class="chip-icon">✦</span> Virolas grabadas a mano</div>
+      </div>
+
+      <a href="#materos" class="hero-cta">
+        Ver catálogo <span class="arrow">↓</span>
+      </a>
+
+      <div class="hero-stats fade-in-3">
+        <div class="hero-stat">
+          <div class="hero-stat-num">10+</div>
+          <div class="hero-stat-label">Modelos</div>
+        </div>
+        <div class="hero-stat-sep"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">Artesanal</div>
+        </div>
+        <div class="hero-stat-sep"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">PY</div>
+          <div class="hero-stat-label">Todo el país</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ NUESTRA HISTORIA ══════════════════════════════════════════ -->
+<section class="historia">
+  <div class="inner fade-in-2">
+    <div class="historia-foto">
+      <img src="foto_local.jpg" alt="Local Todo Mate Paraguay" style="width:100%;height:100%;object-fit:cover;border-radius:14px;">
+    </div>
+    <div>
+      <p class="section-label">nuestra historia</p>
+      <h2>Materos con alma paraguaya</h2>
+      <p>
+        En Todo Mate Paraguay encontrás desde el matero más tradicional hasta el más premium —
+        todo con materiales de calidad real: cuero genuino, madera natural, virolas grabadas a mano.
+        Cada pieza tiene su historia. Encontranos en Instagram como
+        <strong>@todomateepy</strong>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MATEROS ════════════════════════════════════════════════════ -->
+<section class="seccion" id="materos">
+  <div class="container">
+    <div class="seccion-header fade-in">
+      <p class="section-label">lo más pedido</p>
+      <h2>Materos Imperiales</h2>
+    </div>
+    <div class="editorial-grid" id="grid-materos"></div>
+    <div class="virola-divider">
+      <div class="circulo"></div>
+      <div class="circulo"></div>
+      <div class="circulo"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ YERBAS & ACCESORIOS ════════════════════════════════════════ -->
+<section class="seccion seccion-dark" id="yerbas">
+  <div class="container">
+    <div class="seccion-header">
+      <p class="section-label">para completar el mate</p>
+      <h2>Yerbas &amp; Accesorios</h2>
+    </div>
+    <div class="compact-grid" id="grid-yerbas"></div>
+    <div class="virola-divider" style="margin-top:52px">
+      <div class="circulo" style="border-color:var(--verde-pasto)"></div>
+      <div class="circulo" style="border-color:var(--verde-pasto)"></div>
+      <div class="circulo" style="border-color:var(--verde-pasto)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COMBOS & PROMOS ════════════════════════════════════════════ -->
+<section class="seccion" id="combos">
+  <div class="container">
+    <div class="seccion-header">
+      <p class="section-label">mejor precio</p>
+      <h2>Combos &amp; Promos</h2>
+    </div>
+    <div class="combos-grid" id="grid-combos"></div>
+  </div>
+</section>
+
+<!-- ══ CONTACTO ════════════════════════════════════════════════════ -->
+<section class="contacto">
+  <div class="container">
+    <p class="section-label">¡hablanos!</p>
+    <h2>¿Dónde encontrarnos?</h2>
+    <p class="subtitulo">Hacemos envíos a todo Paraguay. Pedidos por Instagram o WhatsApp.</p>
+
+    <div class="contacto-grid">
+      <div class="contacto-item">
+        <div class="contacto-icon">📸</div>
+        <div class="contacto-label">Instagram</div>
+        <div class="contacto-valor contacto-verde">@todomateepy</div>
+      </div>
+      <div class="contacto-item">
+        <div class="contacto-icon">📍</div>
+        <div class="contacto-label">Ubicación</div>
+        <div class="contacto-valor">San Lorenzo / Asunción</div>
+      </div>
+      <div class="contacto-item">
+        <div class="contacto-icon">📦</div>
+        <div class="contacto-label">Envíos</div>
+        <div class="contacto-valor">Todo Paraguay</div>
+      </div>
+      <div class="contacto-item">
+        <div class="contacto-icon">💬</div>
+        <div class="contacto-label">Pedidos</div>
+        <div class="contacto-valor">Instagram · WhatsApp</div>
+      </div>
+    </div>
+
+    <div class="footer-virola"><span></span></div>
+    <p class="footer-marca">Todo Mate Paraguay</p>
+    <p class="footer-copy">Catálogo 2026 · @todomateepy · Paraguay</p>
+  </div>
+</section>
+
+<!-- ══ CARRITO FAB ══════════════════════════════════════════════ -->
+<button class="cart-fab" onclick="abrirCarrito()">
+  🛒
+  <span class="cart-badge" id="cart-badge">0</span>
+</button>
+
+<!-- ══ CARRITO PANEL ══════════════════════════════════════════════ -->
+<div class="cart-overlay" id="cart-overlay" onclick="cerrarCarrito()"></div>
+<div class="cart-panel" id="cart-panel">
+  <div class="cart-header">
+    <h3>🛒 Tu pedido</h3>
+    <button class="cart-close" onclick="cerrarCarrito()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items">
+    <div class="cart-empty">Todavía no agregaste nada.<br>¡Elegí tu mate!</div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span class="cart-total-label">Total estimado</span>
+      <span class="cart-total-valor" id="cart-total">Gs. 0</span>
+    </div>
+    <button class="btn-wa-send" onclick="enviarWhatsApp()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.528 5.845L0 24l6.335-1.509A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.002-1.368l-.36-.214-3.724.977.994-3.634-.235-.374A9.818 9.818 0 1112 21.818z"/></svg>
+      Enviar pedido por WhatsApp
+    </button>
+  </div>
+</div>
+
+<script>
+/* ─── CONFIG ─────────────────────────────────────────────────────
+   Cambiá este número por el WhatsApp real del negocio
+   Formato: código de país + número sin espacios ni +
+   Ejemplo Paraguay: 595971123456
+   ─────────────────────────────────────────────────────────────── */
+const WHATSAPP_NUMBER = "595986815503";
+/* ═══════════════════════════════════════════════════════════════
+   PRODUCTOS — editá solo este array para agregar/quitar items.
+   No toques el HTML ni el CSS.
+   ═══════════════════════════════════════════════════════════════ */
+const productos = [
+  {
+    id: 1,
+    categoria: "Materos",
+    nombre: "Mate Imperial Cuero Liso",
+    descripcion: "Cuero negro liso con virola plateada grabada. Base sólida, agarre premium.",
+    precio: "Gs. 300.000",
+    foto: "fotos_materos/photo_5_2026-05-21_14-25-48.jpg",
+    destacado: true,
+    badge: "⭐ El más pedido"
+  },
+  {
+    id: 2,
+    categoria: "Materos",
+    nombre: "Mate Imperial Cuero Dibujado a Mano",
+    descripcion: "Cuero negro con figuras talladas a mano. Virola dorada grabada. Único.",
+    precio: "Gs. 350.000",
+    foto: "fotos_materos/photo_3_2026-05-21_14-25-48.jpg",
+    destacado: false,
+    badge: "✦ Artesanal"
+  },
+  {
+    id: 3,
+    categoria: "Materos",
+    nombre: "Matero Premium",
+    descripcion: "Cuero negro con virola dorada grabada y patas artesanales. Acabado de lujo.",
+    precio: "Gs. 380.000",
+    foto: "fotos_materos/photo_2_2026-05-21_14-25-48.jpg",
+    destacado: false,
+    badge: null
+  },
+  {
+    id: 3.1,
+    categoria: "Materos",
+    nombre: "Mate Criollo",
+    descripcion: "Porongo natural curado. El sabor auténtico de siempre.",
+    precio: "Gs. 150.000",
+    foto: "fotos_materos/photo_28_2026-05-21_14-25-48.jpg",
+    destacado: false,
+    badge: null
+  },
+  {
+    id: 3.12,
+    categoria: "Materos",
+    nombre: "Mate Imperial Base de Cuero Premium",
+    descripcion: "Cuero negro liso con virola plateada de corona. El más robusto de la línea.",
+    precio: "Gs. 380.000",
+    foto: "foto_imperial_base_cuero_premium.jpg",
+    destacado: false,
+    badge: "★ Premium"
+  },
+  {
+    id: 3.15,
+    categoria: "Materos",
+    nombre: "Mate Criollo Imperial Base de Cuero",
+    descripcion: "Porongo criollo natural con virola plateada grabada y base de cuero cosida a mano.",
+    precio: "Gs. 380.000",
+    foto: "foto_criollo_imperial.jpg",
+    destacado: false,
+    badge: null
+  },
+  {
+    id: 3.2,
+    categoria: "Materos",
+    nombre: "Mate Imperial Deluxe",
+    descripcion: "Cuero negro repujado con virola doble plateada. El más completo de la línea.",
+    precio: "Gs. 380.000",
+    foto: "Materos/photo_20_2026-05-21_14-25-48.jpg",
+    destacado: false,
+    badge: "★ Deluxe"
+  },
+  {
+    id: 3.3,
+    categoria: "Materos",
+    nombre: "Mate Imperial Roma",
+    descripcion: "Cuero negro con virola doble plateada grabada. Diseño único y robusto.",
+    precio: "Gs. 380.000",
+    foto: "Materos/photo_16_2026-05-21_14-25-48.jpg",
+    destacado: false,
+    badge: null
+  },
+  {
+    id: 4,
+    categoria: "Materos",
+    nombre: "Mate Imperial con Base de Cuero",
+    descripcion: "Cuero negro repujado con virola plateada. Patas artesanales.",
+    precio: "Gs. 380.000",
+    foto: "fotos_materos/photo_9_2026-05-21_14-25-48.jpg",
+    destacado: false,
+    badge: null
+  },
+  {
+    id: 5,
+    categoria: "Materos",
+    nombre: "Mate Imperial Cuero Liso",
+    descripcion: "Cuero liso negro con virola plateada grabada. Elegante y duradero.",
+    precio: "Gs. 300.000",
+    foto: "fotos_materos/photo_10_2026-05-21_14-25-48.jpg",
+    destacado: false,
+    badge: null
+  },
+  {
+    id: 6,
+    categoria: "Materos",
+    nombre: "Mate Camionero de Algarrobo Laqueado",
+    descripcion: "Madera de algarrobo laqueada a mano. Veta natural única, boca ancha.",
+    precio: "Gs. 280.000",
+    foto: "fotos_materos/photo_26_2026-05-21_14-25-48.jpg",
+    destacado: false,
+    badge: null
+  },
+  {
+    id: 7,
+    categoria: "Materos",
+    nombre: "Mate Criollo Camionero Rustico",
+    descripcion: "Porongo natural rustico, curado a la antigua. El sabor de siempre.",
+    precio: "Gs. 150.000",
+    foto: "fotos_materos/photo_28_2026-05-21_14-25-48.jpg",
+    destacado: false,
+    badge: null
+  },
+  {
+    id: 8,
+    categoria: "Yerbas",
+    nombre: "Yerba Canarias Original 1kg",
+    descripcion: "Sabor tradicional brasileño. La más vendida del Paraguay.",
+    precio: "Gs. 60.000",
+    foto: "Yerba Canarias/photo_2_2026-05-04_16-41-05.jpg",
+    badge: "⭐ La más pedida"
+  },
+  {
+    id: 9,
+    categoria: "Yerbas",
+    nombre: "Yerba Baldo 100g",
+    descripcion: "Erva-mate padrão uruguayo.",
+    precio: "Gs. 8.000",
+    foto: "",
+    badge: null
+  },
+  {
+    id: 10,
+    categoria: "Termos",
+    nombre: "Termo Hydrate 1L",
+    descripcion: "Acero inoxidable, mantiene la temperatura todo el día.",
+    precio: "Gs. 180.000",
+    foto: "",
+    badge: null
+  },
+  {
+    id: 11,
+    categoria: "Combos",
+    nombre: "Combo Imperial",
+    descripcion: "Mate Imperial Base de Cuero + bombilla de acero incluida. El kit perfecto para empezar o regalar.",
+    precio: "Gs. 430.000",
+    foto: "",
+    badge: "🔥 Más vendido"
+  }
+];
+
+/* ── helpers ──────────────────────────────────────────────────── */
+function imgTag(src, alt) {
+  return `<img src="${src}" alt="${alt}"
+    onerror="this.parentElement.querySelector('.placeholder-txt').style.display='flex';this.remove()">`;
+}
+
+/* ── Materos (grid editorial) ─────────────────────────────────── */
+function renderMateros() {
+  const materos = productos.filter(p => p.categoria === "Materos");
+  document.getElementById('grid-materos').innerHTML = materos.map((p, i) => `
+    <div class="card ${i === 0 ? 'card-featured' : ''}">
+      <div class="card-img">
+        ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ''}
+        <span class="placeholder-txt">${p.nombre}</span>
+        ${imgTag(p.foto, p.nombre)}
+      </div>
+      <div class="card-body">
+        <div class="card-nombre">${p.nombre}</div>
+        <div class="card-desc">${p.descripcion}</div>
+        <div class="card-precio">${p.precio}</div>
+        <div class="card-btns">
+          <button class="btn-add" onclick="agregarAlCarrito(${p.id}, this)">🛒 Agregar</button>
+          <a class="btn-wa" href="https://wa.me/595986815503?text=${encodeURIComponent('Hola! Me interesa el ' + p.nombre + ' a ' + p.precio + '. ¿Está disponible?')}" target="_blank" title="Consultar por WhatsApp">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ── Yerbas & Termos (grid compacto) ─────────────────────────── */
+function renderYerbas() {
+  const items = productos.filter(p => p.categoria === "Yerbas" || p.categoria === "Termos");
+  document.getElementById('grid-yerbas').innerHTML = items.map(p => `
+    <div class="card-compact">
+      <div class="card-compact-img">
+        <img src="${p.foto}" alt="${p.nombre}" onerror="this.style.display='none'">
+      </div>
+      <div class="card-compact-info">
+        <div class="card-compact-nombre">${p.nombre}</div>
+        <div class="card-compact-desc">${p.descripcion}</div>
+        <div class="card-compact-precio">${p.precio}</div>
+        <div class="card-btns" style="margin-top:6px">
+          <button class="btn-add" style="font-size:11px;padding:8px 6px" onclick="agregarAlCarrito(${p.id}, this)">🛒 Agregar</button>
+          <a class="btn-wa" style="width:38px;height:38px" href="https://wa.me/595986815503?text=${encodeURIComponent('Hola! Me interesa ' + p.nombre + ' a ' + p.precio + '. ¿Está disponible?')}" target="_blank" title="Consultar por WhatsApp">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ── Combos ───────────────────────────────────────────────────── */
+function renderCombos() {
+  const combos = productos.filter(p => p.categoria === "Combos");
+  document.getElementById('grid-combos').innerHTML = combos.map(p => `
+    <div class="card-combo">
+      ${p.badge ? `<span class="combo-badge">${p.badge}</span>` : ''}
+      <h3>${p.nombre}</h3>
+      <p>${p.descripcion}</p>
+      <div class="combo-footer">
+        <span class="combo-precio">${p.precio}</span>
+        <span class="combo-subtexto">Envío a todo Paraguay</span>
+      </div>
+      <div class="card-btns" style="margin-top:16px">
+        <button class="btn-add" onclick="agregarAlCarrito(${p.id}, this)">🛒 Agregar al pedido</button>
+        <a class="btn-wa" href="https://wa.me/595986815503?text=${encodeURIComponent('Hola! Me interesa el ' + p.nombre + ' a ' + p.precio + '. ¿Está disponible?')}" target="_blank" title="Consultar por WhatsApp">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ─── CARRITO ─────────────────────────────────────────────────── */
+let carrito = [];
+
+function agregarAlCarrito(id, btn) {
+  const prod = productos.find(p => p.id == id);
+  if (!prod) return;
+  const existente = carrito.find(i => i.id == id);
+  if (existente) {
+    existente.cantidad++;
+  } else {
+    carrito.push({ id: prod.id, nombre: prod.nombre, precio: prod.precio, cantidad: 1 });
+  }
+  btn.classList.add('agregado');
+  btn.textContent = '✓ Agregado';
+  setTimeout(() => {
+    btn.classList.remove('agregado');
+    btn.textContent = '+ Agregar al pedido';
+  }, 1200);
+  actualizarBadge();
+  renderCarritoItems();
+}
+
+function cambiarCantidad(id, delta) {
+  const item = carrito.find(i => i.id == id);
+  if (!item) return;
+  item.cantidad += delta;
+  if (item.cantidad <= 0) carrito = carrito.filter(i => i.id != id);
+  actualizarBadge();
+  renderCarritoItems();
+}
+
+function actualizarBadge() {
+  const total = carrito.reduce((s, i) => s + i.cantidad, 0);
+  const badge = document.getElementById('cart-badge');
+  badge.textContent = total;
+  badge.classList.toggle('visible', total > 0);
+}
+
+function renderCarritoItems() {
+  const container = document.getElementById('cart-items');
+  const totalEl = document.getElementById('cart-total');
+  if (carrito.length === 0) {
+    container.innerHTML = '<div class="cart-empty">Todavía no agregaste nada.<br>¡Elegí tu mate!</div>';
+    totalEl.textContent = 'Gs. 0';
+    return;
+  }
+  container.innerHTML = carrito.map(item => `
+    <div class="cart-item">
+      <div class="cart-item-info">
+        <div class="cart-item-nombre">${item.nombre}</div>
+        <div class="cart-item-precio">${item.precio}</div>
+      </div>
+      <div class="cart-item-qty">
+        <button class="qty-btn" onclick="cambiarCantidad(${item.id}, -1)">−</button>
+        <span class="qty-num">${item.cantidad}</span>
+        <button class="qty-btn" onclick="cambiarCantidad(${item.id}, 1)">+</button>
+      </div>
+    </div>
+  `).join('');
+  const totalNum = carrito.reduce((s, i) => {
+    const num = parseInt(i.precio.replace(/\D/g, ''));
+    return s + num * i.cantidad;
+  }, 0);
+  totalEl.textContent = 'Gs. ' + totalNum.toLocaleString('es-PY');
+}
+
+function abrirCarrito() {
+  document.getElementById('cart-panel').classList.add('open');
+  document.getElementById('cart-overlay').classList.add('open');
+}
+
+function cerrarCarrito() {
+  document.getElementById('cart-panel').classList.remove('open');
+  document.getElementById('cart-overlay').classList.remove('open');
+}
+
+function enviarWhatsApp() {
+  if (carrito.length === 0) { alert('Agregá productos primero!'); return; }
+  let msg = '¡Hola! Quiero hacer un pedido de Todo Mate Paraguay:\n\n';
+  carrito.forEach(i => { msg += `• ${i.nombre} x${i.cantidad} — ${i.precio}\n`; });
+  const totalNum = carrito.reduce((s, i) => s + parseInt(i.precio.replace(/\D/g,'')) * i.cantidad, 0);
+  msg += `\n*Total: Gs. ${totalNum.toLocaleString('es-PY')}*`;
+  msg += '\n\n¿Tienen stock disponible?';
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+renderMateros();
+renderYerbas();
+renderCombos();
+</script>
+</body>
+</html>
